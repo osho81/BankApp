@@ -1,4 +1,4 @@
-package com.yajava.bankapp.banklogic;
+package com.yajava.bankapp.applogic;
 
 import com.yajava.bankapp.account.SavingAccount;
 import com.yajava.bankapp.account.TransactionAccount;
@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		BankLogic bankLogic = new BankLogic();
+		AppLogic bankLogic = new AppLogic();
 		bankLogic.runApp();
 		
 		Customer c1 = new Customer("Mickey", "Mouse", "City address 123", "1950121212", 1001);
