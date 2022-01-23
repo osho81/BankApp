@@ -3,16 +3,22 @@ package com.yajava.bankapp.applogic;
 import com.yajava.bankapp.account.SavingAccount;
 import com.yajava.bankapp.account.TransactionAccount;
 import com.yajava.bankapp.customer.Customer;
+import com.yajava.bankapp.utils.Printout;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
-		// Testing comment AGAIIIIIIIIIN
-		
-		AppLogic bankLogic = new AppLogic();
-		bankLogic.runApp();
-		
+		// Welcome user - utilizing DesignPrint's static method
+		Printout.welcome();
+
+		// Run application logic and menus
+		AppLogic appLogic = new AppLogic();
+		appLogic.start();
+
+
+
+		// TEMPORARY TESTING
 		Customer c1 = new Customer("Mickey", "Mouse", "City address 123", "1950121212", 1001);
 		
 		TransactionAccount tAcc = new TransactionAccount("123456789");

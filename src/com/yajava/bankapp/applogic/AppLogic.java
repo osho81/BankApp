@@ -1,56 +1,61 @@
 package com.yajava.bankapp.applogic;
 
-import java.awt.Dimension;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-
-import com.yajava.bankapp.customeraction.CustomerAction;
-import com.yajava.bankapp.utils.PanelDesign;
-
-/**
- * Main application class orchestrating the program
+/*
+ * Application logic, including outer menu and two inner menus
  */
+
+import com.yajava.bankapp.service.CustomerActions;
+import com.yajava.bankapp.service.EmployeeActions;
+import com.yajava.bankapp.utils.Printout;
+import com.yajava.bankapp.utils.InputValidation;
 
 public class AppLogic {
 
-	CustomerAction customerAction = new CustomerAction(); 
-	
-	public void runApp() {
-		// Welcome code....
+    EmployeeActions employeeActions = new EmployeeActions();
+    CustomerActions customerActions = new CustomerActions();
 
-		
-		
-		// OUTER menu
-		final ImageIcon icon = new ImageIcon("src/moneybag.png"); // Icon from www.icons8.com
-		
-		// Inne panel size
-		UIManager.put("OptionPane.minimumSize", new Dimension(250, 120));
-		
-		// Returned panel design objects
-		JPanel returnedPanel = PanelDesign.panel("Welcome to Bank Of Bravos");
-		JPanel returnedPanel2 = PanelDesign.panel("Thank You...");
-		
-		int choice = -1; 
-		while (choice != 2) {
-			String[] choices = { "Employee?", "Customer?", "Exit" };
-			choice = JOptionPane.showOptionDialog(null, returnedPanel, "Bank Of Bravos",
-					JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, icon, choices, choices[0]);
-			if (choice == 0) {
-				// Employee - send to inner menu for employee
-				customerAction.runMenu();
-			} else if (choice == 1) {
-				// Employee - send to inner menu for employee
+    public void start() throws InterruptedException {
 
-			} else {
-				JOptionPane.showMessageDialog(null, returnedPanel2);
-			}
-		}
-		
-		
+        int userChoice = 0;
+        while (userChoice != 3) {
+            Printout.startMenu();
+            userChoice = InputValidation.validateUserMenuChoice();
+            switch (userChoice) {
+                case 1 -> employeeMenu();
+                case 2 -> customerMenu();
+                case 3 -> Printout.exitMessage();
+            }
+        }
+    }
 
-	}
-	
+    private void employeeMenu() throws InterruptedException {
+
+        int userChoice = 0;
+        while (userChoice != 4) {
+            Printout.employeeMenu();
+            userChoice = InputValidation.validateUserMenuChoice();
+            switch (userChoice) {
+                case 1 -> employeeActions.addCustomer();
+                case 2 -> employeeActions.blockCustomer();
+                case 3 -> employeeActions.removeCustomer();
+                case 4 -> start();
+            }
+        }
+    }
+
+    private void customerMenu() throws InterruptedException {
+
+        int userChoice = 0;
+        while (userChoice != 4) {
+            Printout.customerMenu();
+            userChoice = InputValidation.validateUserMenuChoice();
+            switch (userChoice) {
+                case 1 -> customerActions.accountInfo();
+                case 2 -> customerActions.depositMoney();
+                case 3 -> customerActions.withdrawMoney();
+                case 4 -> start();
+            }
+        }
+    }
 
 }

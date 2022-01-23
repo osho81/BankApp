@@ -1,4 +1,4 @@
-package com.yajava.bankapp.customeraction;
+package com.yajava.bankapp.service;
 
 public class CustomerAction {
 
