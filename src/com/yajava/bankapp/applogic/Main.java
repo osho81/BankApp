@@ -7,7 +7,8 @@ import com.yajava.bankapp.customer.Customer;
 public class Main {
 
 	public static void main(String[] args) {
-		
+
+		// Testing comment
 		
 		AppLogic bankLogic = new AppLogic();
 		bankLogic.runApp();
