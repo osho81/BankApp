@@ -4,7 +4,7 @@ public class Printout {
 
 
     public static void welcome() throws InterruptedException {
-        String welcome = "Welcome to Bank Of Bravos";
+        String welcome = "Welcome to Bank Of Bravos\n";
         for (char c : welcome.toCharArray()) {
             System.out.print(c);
             Thread.sleep(50);
@@ -13,7 +13,7 @@ public class Printout {
     }
 
     public static void exitMessage() throws InterruptedException {
-        String welcome = "Thank You!";
+        String welcome = "Thank You!\n";
         for (char c : welcome.toCharArray()) {
             System.out.print(c);
             Thread.sleep(50);
