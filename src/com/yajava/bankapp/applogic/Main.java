@@ -23,6 +23,7 @@ public class Main {
 
 
 		// TEMPORARY TESTING
+		System.out.println("---Temporary testing outside menu/app logic---");
 		Customer c1 = new Customer("Mickey", "Mouse", "City address 123", "1950121212", 1001);
 		
 		TransactionAccount tAcc = new TransactionAccount("123456789");
