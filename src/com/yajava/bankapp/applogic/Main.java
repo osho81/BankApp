@@ -5,8 +5,9 @@ import com.yajava.bankapp.account.TransactionAccount;
 import com.yajava.bankapp.customer.Customer;
 import com.yajava.bankapp.utils.Printout;
 
-
-// Test git after re-installing IntelliJ
+/**
+ * Main class; welcomes user and starts the app (menu/application logic)
+ */
 
 public class Main {
 
