@@ -5,6 +5,9 @@ import com.yajava.bankapp.account.TransactionAccount;
 import com.yajava.bankapp.customer.Customer;
 import com.yajava.bankapp.utils.Printout;
 
+
+// Test git after re-installing IntelliJ
+
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
