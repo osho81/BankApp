@@ -11,6 +11,7 @@ import com.yajava.bankapp.utils.InputValidation;
 
 public class AppLogic {
 
+    CustomerRegister customerRegister = CustomerRegister.CreateList(); // Singleton
     EmployeeActions employeeActions = new EmployeeActions();
     CustomerActions customerActions = new CustomerActions();
 
@@ -35,7 +36,7 @@ public class AppLogic {
             Printout.employeeMenu();
             userChoice = InputValidation.validateUserMenuChoice();
             switch (userChoice) {
-                case 1 -> employeeActions.addCustomer();
+                case 1 -> employeeActions.addCustomer(customerRegister);
                 case 2 -> employeeActions.blockCustomer();
                 case 3 -> employeeActions.removeCustomer();
                 case 4 -> start();

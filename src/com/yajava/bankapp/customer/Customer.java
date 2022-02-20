@@ -12,7 +12,7 @@ public class Customer extends Person {
 	// Constructor, also implementing super class constructor
 	public Customer(String fName, String lName, String address, String ssn, int customerNo) {
 		super(fName, lName, address, ssn);
-		setCustomerNo(customerNo);
+		this.customerNo = customerNo;
 	}
 
 	public TransactionAccount getTransAcc() {
@@ -38,11 +38,7 @@ public class Customer extends Person {
 	}
 
 	public void setCustomerNo(int customerNo) {
-		if (customerNo > 1000) {
-			this.customerNo = customerNo;
-		} else {
-			throw new IllegalArgumentException("Customer number must be bigger than 1000");
-		}
+		this.customerNo = customerNo;
 	}
 
 	@Override
