@@ -35,12 +35,14 @@ public class InputValidation {
         return str;
     }
 
+    // ----------------MAYBE CHANGE THIS TO DO-WHILE-LOOP--------------------
     public static String ssnValidation() {
         String str = scan.nextLine();
 
         // Check if only numbers in social security number
+        boolean stopLoop = false;
         boolean containsLetter = false;
-        while (!containsLetter) {
+        while (!stopLoop) {
             char[] chars = str.toCharArray();
             for (char c : chars) {
                 if (!Character.isDigit(c)) {
@@ -49,7 +51,10 @@ public class InputValidation {
             }
             if (containsLetter) {
                 System.out.println("SSN should be numbers, try again: ");
+                containsLetter = false; // Reset condition, to check again
                 str = scan.nextLine();
+            } else {
+                stopLoop = true; // Otherwise end loop
             }
         }
         return str;
