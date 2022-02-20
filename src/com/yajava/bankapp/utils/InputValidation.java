@@ -49,8 +49,8 @@ public class InputValidation {
                     containsLetter = true;
                 }
             }
-            if (containsLetter) {
-                System.out.println("SSN should be numbers, try again: ");
+            if (containsLetter || str.length() < 10) {
+                System.out.println("SSN should be 10 digits, try again: ");
                 containsLetter = false; // Reset condition, to check again
                 str = scan.nextLine();
             } else {
