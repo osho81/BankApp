@@ -9,17 +9,23 @@ public class InputValidation {
     private static final Scanner scan = new Scanner(System.in);
 
     public static int validateUserIntegerChoice(int maxNum) {
-        while (!scan.hasNextInt()) {
-            if (scan.nextInt() >= maxNum) {
-                scan.nextLine(); // Consumes leftovers
-            } else {
-                System.out.println("Only numbers are allowed, and must be less than " + maxNum);
-                scan.nextLine(); // Consumes leftovers
+
+        boolean loop = true;
+        int currentValue = 0;
+        while (loop) { // Loop, ask for input until less than maxNum
+            if (scan.hasNextInt()) {
+                currentValue = scan.nextInt();
+                if (currentValue > 0 || currentValue < maxNum)
+                    loop = false; // Only via here the loop stops
+                else
+                    System.out.println("Must be less than " + maxNum);
+            } else { // If input is not digits
+                System.out.println("Only numbers are allowed");
+                scan.next();
             }
         }
-        int intChoice = scan.nextInt();
-        scan.nextLine(); // Consumes leftovers
-        return intChoice;
+        return currentValue;
+
     }
 
     // Not needed because follows numbers of customersList-length
@@ -27,11 +33,11 @@ public class InputValidation {
         int customerChoice = scan.nextInt();
 
         // Consider customer numbers is +1000
-        while ((customerChoice) < 1000 || (customerChoice) >= customerList.size()+1000) {
+        while ((customerChoice) < 1000 || (customerChoice) >= customerList.size() + 1000) {
             System.out.println("Customer number does not exist, try again");
             customerChoice = scan.nextInt();
         }
-        return customerChoice-1000; // So return numbers uitable for list-index
+        return customerChoice - 1000; // So return numbers uitable for list-index
     }
 
     public static String stringValidation() {
