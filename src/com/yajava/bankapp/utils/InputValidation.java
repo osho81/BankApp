@@ -23,7 +23,7 @@ public class InputValidation {
         int customerChoice = scan.nextInt();
 
         // Consider customer numbers is +1000
-        while ((customerChoice) < 1000 || (customerChoice) > customerList.size()+1000) {
+        while ((customerChoice) < 1000 || (customerChoice) >= customerList.size()+1000) {
             System.out.println("Customer number does not exist, try again");
             customerChoice = scan.nextInt();
         }

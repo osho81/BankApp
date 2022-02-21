@@ -48,13 +48,17 @@ public class AppLogic {
 
     private void customerMenu() throws InterruptedException {
 
+        // Settle which customer is using the app
+        boolean notNull = false;
+        while (!notNull) {
+            Customer chosenCustomer = Search.searchWithSSN(customerRegister.getCustomerList());
+            String displayString = chosenCustomer == null ? "Try again: " : "Welcome " + chosenCustomer.getfName() + " " + chosenCustomer.getlName();
+            System.out.println(displayString);
+            notNull = chosenCustomer == null ? false : true;
+        }
+
         int userChoice = 0;
         while (userChoice != 4) {
-            // Settle which customer is using the app
-            System.out.println("Please, enter your SSN: ");
-            Customer chosenCustomer = Search.searchWithSSN(customerRegister.getCustomerList());
-            String displayString = chosenCustomer == null ? "Try again; See menu " : "Welcome " + chosenCustomer.getfName() + " " + chosenCustomer.getlName();
-            System.out.println(displayString);
 
             Printout.customerMenu();
             userChoice = InputValidation.validateUserMenuChoice();
