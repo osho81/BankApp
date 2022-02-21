@@ -4,10 +4,12 @@ package com.yajava.bankapp.applogic;
  * Application logic, including outer menu and two inner menus
  */
 
+import com.yajava.bankapp.customer.Customer;
 import com.yajava.bankapp.service.CustomerActions;
 import com.yajava.bankapp.service.EmployeeActions;
 import com.yajava.bankapp.utils.Printout;
 import com.yajava.bankapp.utils.InputValidation;
+import com.yajava.bankapp.utils.Search;
 
 public class AppLogic {
 
@@ -48,6 +50,12 @@ public class AppLogic {
 
         int userChoice = 0;
         while (userChoice != 4) {
+            // Settle which customer is using the app
+            System.out.println("Please, enter your SSN: ");
+            Customer chosenCustomer = Search.searchWithSSN(customerRegister.getCustomerList());
+            String displayString = chosenCustomer == null ? "Try again; See menu " : "Welcome " + chosenCustomer.getfName() + " " + chosenCustomer.getlName();
+            System.out.println(displayString);
+
             Printout.customerMenu();
             userChoice = InputValidation.validateUserMenuChoice();
             switch (userChoice) {
