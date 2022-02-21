@@ -22,7 +22,7 @@ public class AppLogic {
         int userChoice = 0;
         while (userChoice != 3) {
             Printout.startMenu();
-            userChoice = InputValidation.validateUserMenuChoice();
+            userChoice = InputValidation.validateUserIntegerChoice(3);
             switch (userChoice) {
                 case 1 -> employeeMenu();
                 case 2 -> customerMenu();
@@ -36,7 +36,7 @@ public class AppLogic {
         int userChoice = 0;
         while (userChoice != 4) {
             Printout.employeeMenu();
-            userChoice = InputValidation.validateUserMenuChoice();
+            userChoice = InputValidation.validateUserIntegerChoice(4);
             switch (userChoice) {
                 case 1 -> employeeActions.addCustomer(customerRegister);
                 case 2 -> employeeActions.showCustomer(customerRegister);
@@ -49,9 +49,10 @@ public class AppLogic {
     private void customerMenu() throws InterruptedException {
 
         // Settle which customer is using the app
+        Customer chosenCustomer = null;
         boolean notNull = false;
         while (!notNull) {
-            Customer chosenCustomer = Search.searchWithSSN(customerRegister.getCustomerList());
+            chosenCustomer = Search.searchWithSSN(customerRegister.getCustomerList());
             String displayString = chosenCustomer == null ? "Try again: " : "Welcome " + chosenCustomer.getfName() + " " + chosenCustomer.getlName();
             System.out.println(displayString);
             notNull = chosenCustomer == null ? false : true;
@@ -61,11 +62,11 @@ public class AppLogic {
         while (userChoice != 4) {
 
             Printout.customerMenu();
-            userChoice = InputValidation.validateUserMenuChoice();
+            userChoice = InputValidation.validateUserIntegerChoice(4);
             switch (userChoice) {
-                case 1 -> customerActions.accountInfo();
-                case 2 -> customerActions.depositMoney();
-                case 3 -> customerActions.withdrawMoney();
+                case 1 -> customerActions.accountInfo(chosenCustomer);
+                case 2 -> customerActions.depositMoney(chosenCustomer);
+                case 3 -> customerActions.withdrawMoney(chosenCustomer);
                 case 4 -> start();
             }
         }

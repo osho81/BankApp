@@ -34,7 +34,7 @@ public class EmployeeActions {
 
     public void showCustomer(CustomerRegister customerRegister) {
         System.out.println("1. Display full customer list\n2. Display specific customer");
-        int choice = InputValidation.validateUserMenuChoice();
+        int choice = InputValidation.validateUserIntegerChoice(2);
         if (choice == 1) {
             for (var cust : customerRegister.getCustomerList()) {
                 System.out.println(cust);

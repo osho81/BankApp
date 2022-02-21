@@ -8,10 +8,10 @@ public class InputValidation {
     // Scanner to be accessed only in this class
     private static final Scanner scan = new Scanner(System.in);
 
-    public static int validateUserMenuChoice() {
-        while (!scan.hasNextInt()) {
+    public static int validateUserIntegerChoice(int maxNum) {
+        while (!scan.hasNextInt() && scan.nextInt() > maxNum) {
             scan.nextLine();
-            System.out.println("Only numbers are allowed");
+            System.out.println("Only numbers are allowed, and must be less than " + maxNum);
         }
         int intChoice = scan.nextInt();
         scan.nextLine(); // Consumes leftovers

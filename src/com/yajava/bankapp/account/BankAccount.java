@@ -38,8 +38,15 @@ public abstract class BankAccount {
 		return balance;
 	}
 
-	public void setBalance(double balance) {
-		this.balance = balance;
+	// If depositOrWithdrawal is true >> deposit, if false >> withdraw
+	public void setBalance(double amount, boolean depositOrWithdrawal) {
+		if (depositOrWithdrawal) { // Deposit
+			balance += amount;
+		} else if (!depositOrWithdrawal || balance >= amount) {
+			balance -= amount;
+		} else if (!depositOrWithdrawal || balance < amount) {
+			System.out.println("Cant withdraw money - You only have " + balance + " USD in your acount.");
+		}
 	}
 
 	public boolean isGoldAccount() {

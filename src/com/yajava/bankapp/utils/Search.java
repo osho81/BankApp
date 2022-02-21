@@ -8,7 +8,7 @@ public class Search {
 
     public static Customer searchAndReturnCustomer(List customerList) {
         System.out.println("1.Search customer by customer number\n2.Search customer by SSN");
-        int choice = InputValidation.validateUserMenuChoice();
+        int choice = InputValidation.validateUserIntegerChoice();
         Customer foundCustomer = null;
 
         // Search for specific customer by customer number
