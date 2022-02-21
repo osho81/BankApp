@@ -44,7 +44,7 @@ public abstract class Person {
 	
 	@Override
 	public String toString() {
-		return "SSN: " + ssn + "\nName: " + fName + " " + lName + "\tAddress: " + address;
+		return "SSN: " + ssn + "\nName: " + fName + " " + lName + "\nAddress: " + address;
 	}
 	
 }

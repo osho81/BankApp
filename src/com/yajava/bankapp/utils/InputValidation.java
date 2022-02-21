@@ -1,5 +1,6 @@
 package com.yajava.bankapp.utils;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputValidation {
@@ -17,13 +18,16 @@ public class InputValidation {
         return intChoice;
     }
 
-    public static int verifyCustomerId() {
-        int customerNo = scan.nextInt();
-        while (customerNo < 1000) {
-            System.out.println("Customer number must bigger than 1000");
-            customerNo = scan.nextInt();
+    // Not needed because follows numbers of customersList-length
+    public static int validateCustomerChoice(List customerList) {
+        int customerChoice = scan.nextInt();
+
+        // Consider customer numbers is +1000
+        while ((customerChoice) < 1000 || (customerChoice) > customerList.size()+1000) {
+            System.out.println("Customer number does not exist, try again");
+            customerChoice = scan.nextInt();
         }
-        return customerNo;
+        return customerChoice-1000; // So return numbers uitable for list-index
     }
 
     public static String stringValidation() {
@@ -35,11 +39,11 @@ public class InputValidation {
         return str;
     }
 
-    // ----------------MAYBE CHANGE THIS TO DO-WHILE-LOOP--------------------
-    public static String ssnValidation() {
+    // Check if only numbers in social security number, account numbers etc
+    public static String stringedNumbersValidation() {
         String str = scan.nextLine();
 
-        // Check if only numbers in social security number
+        // Check if only numbers in input
         boolean stopLoop = false;
         boolean containsLetter = false;
         while (!stopLoop) {
@@ -49,8 +53,9 @@ public class InputValidation {
                     containsLetter = true;
                 }
             }
+            // Redo if contains letter or is less than 10 digits
             if (containsLetter || str.length() < 10) {
-                System.out.println("SSN should be 10 digits, try again: ");
+                System.out.println("Should be at least 10 digits, try again: ");
                 containsLetter = false; // Reset condition, to check again
                 str = scan.nextLine();
             } else {

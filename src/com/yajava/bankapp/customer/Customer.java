@@ -41,10 +41,19 @@ public class Customer extends Person {
 		this.customerNo = customerNo;
 	}
 
+	// Getters/Setters to handle required fields from parent (Person) class
+	@Override
+	public String getSSN() {
+		return super.getSSN();
+	}
+	public void setSSN(String ssn) {
+		super.setSSN(ssn);
+	}
+
 	@Override
 	public String toString() {
-		return "Customer No: " + customerNo + "\t" + super.toString() + "\n\n" + (transAcc == null ? "" : transAcc)
-				+ "\n\n" + (saveAcc == null ? "" : saveAcc);
+		return "Customer No: " + customerNo + "\t\t" + super.toString() + (transAcc == null ? "" : "\n" + transAcc)
+				+ (saveAcc == null ? "" : "\n" + saveAcc) + "\n";
 	}
 
 }

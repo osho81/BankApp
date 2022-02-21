@@ -30,8 +30,8 @@ public class Printout {
     public static void employeeMenu() {
         System.out.println("Choose action: ");
         System.out.println("1: Add customer");
-        System.out.println("2: Block customer");
-        System.out.println("3: Remove customer");
+        System.out.println("2: Show customer");
+        System.out.println("3: Disable customer");
         System.out.println("4: Go back");
     }
     public static void customerMenu() {

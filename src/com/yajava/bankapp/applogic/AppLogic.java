@@ -37,8 +37,8 @@ public class AppLogic {
             userChoice = InputValidation.validateUserMenuChoice();
             switch (userChoice) {
                 case 1 -> employeeActions.addCustomer(customerRegister);
-                case 2 -> employeeActions.blockCustomer();
-                case 3 -> employeeActions.removeCustomer();
+                case 2 -> employeeActions.showCustomer(customerRegister);
+                case 3 -> employeeActions.disableCustomer();
                 case 4 -> start();
             }
         }
