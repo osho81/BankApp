@@ -2,7 +2,6 @@ package com.yajava.bankapp.utils;
 
 public class Printout {
 
-
     public static void welcome() throws InterruptedException {
         String welcome = "Welcome to Bank Of Bravos\n";
         for (char c : welcome.toCharArray()) {

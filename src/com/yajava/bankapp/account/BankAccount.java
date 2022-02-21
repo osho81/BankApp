@@ -17,7 +17,7 @@ public abstract class BankAccount {
 	}
 
 	public void setAccountNo(String accountNo) {
-		// Check if only 0-1 is entered
+		// Check if only 0-9 is entered
 		boolean onlyNums = false;
 		for (char ch : accountNo.toCharArray()) {
 			switch (ch) {
@@ -30,7 +30,7 @@ public abstract class BankAccount {
 		if (accountNo.length() >= 6 && onlyNums) {
 			this.accountNo = accountNo;
 		} else {
-			throw new IllegalArgumentException("Accountnumber must be at least 6 digits");
+			throw new IllegalArgumentException("Account number must be at least 6 digits");
 		}
 	}
 

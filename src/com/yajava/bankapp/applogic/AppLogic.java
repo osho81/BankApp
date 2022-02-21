@@ -1,7 +1,7 @@
 package com.yajava.bankapp.applogic;
 
 /*
- * Application logic, including outer menu and two inner menus
+ * Application logic, including outer (main) menu and two inner menus
  */
 
 import com.yajava.bankapp.banklogic.BankInfo;

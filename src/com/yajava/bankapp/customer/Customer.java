@@ -45,19 +45,15 @@ public class Customer extends Person {
 	public void setBlockedTransAcc(TransactionAccount transAcc) {
 		this.blockedTransAcc = blockedTransAcc;
 	}
-
 	public SavingAccount getBlockedSaveAcc() {
 		return blockedSaveAcc;
 	}
-
 	public void setBlockedSaveAcc(SavingAccount saveAcc) {
 		this.blockedSaveAcc = blockedSaveAcc;
 	}
-
 	public int getCustomerNo() {
 		return customerNo;
 	}
-
 	public void setCustomerNo(int customerNo) {
 		this.customerNo = customerNo;
 	}

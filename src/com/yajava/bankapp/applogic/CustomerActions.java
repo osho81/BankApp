@@ -20,7 +20,8 @@ public class CustomerActions {
         System.out.println("From which account do you want to deposit money\n"
                 + "1. Transaction account\n2. Saving account\n3. External account");
         int userChoice = InputValidation.validateUserIntegerChoice(3);
-        if (userChoice == 1) {
+
+        if (userChoice == 1) { // Withdraw (to deposit from) from transaction account
             BankAccount fromAccount = chosenCustomer.getTransAcc();
             if (fromAccount.getBalance() < 10) {
                 System.out.println("Sorry, you only have " + fromAccount.getBalance()
@@ -32,7 +33,7 @@ public class CustomerActions {
                 toAccount.setBalance(amount, true); // Deposit to toAccount
             }
 
-        } else if (userChoice == 2) {
+        } else if (userChoice == 2) { // Withdraw (to deposit from) from saving account
             BankAccount fromAccount = chosenCustomer.getSaveAcc();
             if (fromAccount.getBalance() < 10) {
                 System.out.println("Sorry, you only have " + fromAccount.getBalance()
@@ -44,8 +45,8 @@ public class CustomerActions {
                 toAccount.setBalance(amount, true); // Deposit to toAccount
             }
 
-        } else if (userChoice == 3) {
-            System.out.println("How much to deposit (maximum 1 million: ");
+        } else if (userChoice == 3) {  // Deposit from external account (another bank)
+            System.out.println("How much to deposit (maximum 1 million): ");
             double amount = InputValidation.validateUserIntegerChoice(1000000);
             toAccount.setBalance(amount, true);
         }
@@ -56,24 +57,25 @@ public class CustomerActions {
         System.out.println("From which account do you want to withdraw money\n" +
                 "1. Transaction account\n2. Saving account");
         int userChoice = InputValidation.validateUserIntegerChoice(2);
-        if (userChoice == 1) {
+
+        if (userChoice == 1) { // Withdraw from transaction account
             BankAccount fromAccount = chosenCustomer.getTransAcc();
             if (fromAccount.getBalance() < 10) {
                 System.out.println("Sorry, you only have " + fromAccount.getBalance()
                         + " USD in your transaction account (must have at least 10 USD)");
             } else {
-                System.out.println("How much to deposit (maximum " + fromAccount.getBalance() + " USD): ");
+                System.out.println("How much to withdraw (maximum " + fromAccount.getBalance() + " USD): ");
                 double amount = InputValidation.validateUserIntegerChoice((int) fromAccount.getBalance());
                 fromAccount.setBalance(amount, false); // Take from fromAccount
             }
 
-        } else if (userChoice == 2) {
+        } else if (userChoice == 2) { // Withdraw from saving account
             BankAccount fromAccount = chosenCustomer.getSaveAcc();
             if (fromAccount.getBalance() < 10) {
                 System.out.println("Sorry, you only have " + fromAccount.getBalance()
                         + " USD in your saving account (must have at least 10 USD)");
             } else {
-                System.out.println("How much to deposit (maximum " + fromAccount.getBalance() + " USD): ");
+                System.out.println("How much to withdraw (maximum " + fromAccount.getBalance() + " USD): ");
                 double amount = InputValidation.validateUserIntegerChoice((int) fromAccount.getBalance());
                 fromAccount.setBalance(amount, false); // Take from fromAccount
             }
