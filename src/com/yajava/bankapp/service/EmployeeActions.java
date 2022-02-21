@@ -46,16 +46,14 @@ public class EmployeeActions {
             int customerChoice = InputValidation.validateCustomerChoice(customerList);
             System.out.println(customerList.get(customerChoice));
         } else if (choice == 2) {
+            System.out.println("Enter customer SSN");
             boolean found = false;
             String customerChoice = InputValidation.stringedNumbersValidation();
-            for (int i = 0; i < customerList.size(); i++) {
-
-
-                (Customer customerList.get(i)) //-------------How to access SNN from CUSTOMER ???
-
-                if (customerList.get(i).equals(customerChoice)) { // If there is a hit...
-                    System.out.println(customerList.get(i)); // Print customer and mark found
-                    found = true;
+            for (Object customer : customerList) {
+                Customer currentCustomer = (Customer) customer;
+                if (currentCustomer.getSSN().equals(customerChoice)) { // If there is a hit...
+                    System.out.println(currentCustomer); // Print found customer
+                    found = true; // and mark customer as found
                 }
             }
             if (!found) // If not found

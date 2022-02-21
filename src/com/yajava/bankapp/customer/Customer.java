@@ -44,10 +44,10 @@ public class Customer extends Person {
 	// Getters/Setters to handle required fields from parent (Person) class
 	@Override
 	public String getSSN() {
-		return super.getSSN();
+		return super.getSSN(); // From parent (Person)
 	}
 	public void setSSN(String ssn) {
-		super.setSSN(ssn);
+		super.setSSN(ssn); // From parent (Person)
 	}
 
 	@Override
