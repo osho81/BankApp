@@ -50,15 +50,21 @@ public class EmployeeActions {
     public void disableCustomer(CustomerRegister customerRegister) {
         // Search customer to block
         Customer chosenCustomer = searchAndReturnCustomer(customerRegister.getCustomerList());
-        String displayString = chosenCustomer == null ? "Try again; See menu " : "Accounts are disabled for the following customer:\n" + chosenCustomer;
+        String displayString = chosenCustomer == null ? "Try again; See menu " : "Found customer: " + chosenCustomer;
         System.out.println(displayString);
 
         // Actually disabling eventual accounts for chosen customer
         // Consider null situations
-        Objects.requireNonNull(chosenCustomer).setBlockedSaveAcc(chosenCustomer.getSaveAcc());
-        Objects.requireNonNull(chosenCustomer).setBlockedTransAcc(chosenCustomer.getTransAcc());
-        chosenCustomer.setSaveAcc(null);
-        chosenCustomer.setTransAcc(null);
+        if (chosenCustomer.getSaveAcc() != null || chosenCustomer.getTransAcc() != null) {
+            chosenCustomer.setBlockedSaveAcc(chosenCustomer.getSaveAcc());
+            chosenCustomer.setBlockedTransAcc(chosenCustomer.getTransAcc());
+            chosenCustomer.setSaveAcc(null);
+            chosenCustomer.setTransAcc(null);
+            System.out.println("The customer's accounts are disabled");
+        } else {
+            System.out.println("The customer has no active accounts");
+        }
+
 
     }
 

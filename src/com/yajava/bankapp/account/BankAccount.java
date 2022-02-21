@@ -27,10 +27,10 @@ public abstract class BankAccount {
 		}
 		
 		// If account number is 9 charcters and only numbers, accept it
-		if (accountNo.length() > 7 && onlyNums) {
+		if (accountNo.length() >= 6 && onlyNums) {
 			this.accountNo = accountNo;
 		} else {
-			throw new IllegalArgumentException("Accountnumber must be 9 numbers");
+			throw new IllegalArgumentException("Accountnumber must be at least 6 digits");
 		}
 	}
 
