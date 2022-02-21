@@ -42,9 +42,9 @@ public abstract class BankAccount {
 	public void setBalance(double amount, boolean depositOrWithdrawal) {
 		if (depositOrWithdrawal) { // Deposit
 			balance += amount;
-		} else if (!depositOrWithdrawal || balance >= amount) {
+		} else if (!depositOrWithdrawal || balance >= amount) { // Withdrawal
 			balance -= amount;
-		} else if (!depositOrWithdrawal || balance < amount) {
+		} else if (!depositOrWithdrawal || balance < amount) { // Withdrawal but not enough money
 			System.out.println("Cant withdraw money - You only have " + balance + " USD in your acount.");
 		}
 	}

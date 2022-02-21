@@ -6,7 +6,6 @@ import com.yajava.bankapp.utils.InputValidation;
 
 public class CustomerActions {
 
-
     public void accountInfo(Customer chosenCustomer) {
         System.out.println(chosenCustomer);
     }
@@ -23,14 +22,23 @@ public class CustomerActions {
         int userChoice = InputValidation.validateUserIntegerChoice(3);
         if (userChoice == 1) {
             BankAccount fromAccount = chosenCustomer.getSaveAcc();
+            System.out.println("How much to deposit (maximum " + fromAccount.getBalance() + " USD): ");
+            double amount = InputValidation.validateUserIntegerChoice((int) fromAccount.getBalance());
+            fromAccount.setBalance(amount, false); // Take from fromAccount
+            toAccount.setBalance(amount, true); // Deposit to toAccount
+
         } else if (userChoice == 2) {
             BankAccount fromAccount = chosenCustomer.getTransAcc();
+            System.out.println("How much to deposit (maximum " + fromAccount.getBalance() + " USD): ");
+            double amount = InputValidation.validateUserIntegerChoice((int) fromAccount.getBalance());
+            fromAccount.setBalance(amount, false); // Take from fromAccount
+            toAccount.setBalance(amount, true); // Deposit to toAccount
+
         } else if (userChoice == 3) {
             System.out.println("How much to deposit (maximum 1 million: ");
-            double amount = (double) InputValidation.validateUserIntegerChoice(1000000);
+            double amount = InputValidation.validateUserIntegerChoice(1000000);
             toAccount.setBalance(amount, true);
         }
-
     }
 
     public void withdrawMoney(Customer chosenCustomer) {

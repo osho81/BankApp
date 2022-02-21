@@ -9,9 +9,13 @@ public class InputValidation {
     private static final Scanner scan = new Scanner(System.in);
 
     public static int validateUserIntegerChoice(int maxNum) {
-        while (!scan.hasNextInt() && scan.nextInt() > maxNum) {
-            scan.nextLine();
-            System.out.println("Only numbers are allowed, and must be less than " + maxNum);
+        while (!scan.hasNextInt()) {
+            if (scan.nextInt() >= maxNum) {
+                scan.nextLine(); // Consumes leftovers
+            } else {
+                System.out.println("Only numbers are allowed, and must be less than " + maxNum);
+                scan.nextLine(); // Consumes leftovers
+            }
         }
         int intChoice = scan.nextInt();
         scan.nextLine(); // Consumes leftovers
