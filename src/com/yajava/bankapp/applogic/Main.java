@@ -1,10 +1,5 @@
 package com.yajava.bankapp.applogic;
 
-import com.yajava.bankapp.account.SavingAccount;
-import com.yajava.bankapp.account.TransactionAccount;
-import com.yajava.bankapp.customer.Customer;
-import com.yajava.bankapp.utils.Printout;
-
 /**
  * Main class; welcomes user and starts the app (menu/application logic)
  */
@@ -18,7 +13,7 @@ public class Main {
 
 		// Run application logic and menus
 		AppLogic appLogic = new AppLogic();
-		appLogic.start();
+		appLogic.mainMenu();
 
 
 

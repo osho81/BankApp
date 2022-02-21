@@ -32,7 +32,7 @@ public class SavingAccount extends BankAccount {
 	@Override
 	public String toString() {
 		String ownerString = owner != null ? String.valueOf(owner.getCustomerNo()) : "Not assigned";
-		return "Saving Account\nOwner:\t\t" + ownerString + "\n" + super.toString();
+		return "SAVING ACCOUNT\nOwner:\t\t\t" + ownerString + "\n" + super.toString();
 	}
 
 	

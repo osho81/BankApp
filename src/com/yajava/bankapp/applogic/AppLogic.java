@@ -4,20 +4,19 @@ package com.yajava.bankapp.applogic;
  * Application logic, including outer menu and two inner menus
  */
 
+import com.yajava.bankapp.banklogic.BankInfo;
 import com.yajava.bankapp.customer.Customer;
-import com.yajava.bankapp.service.CustomerActions;
-import com.yajava.bankapp.service.EmployeeActions;
 import com.yajava.bankapp.utils.Printout;
 import com.yajava.bankapp.utils.InputValidation;
-import com.yajava.bankapp.utils.Search;
+import com.yajava.bankapp.banklogic.Search;
 
 public class AppLogic {
 
-    CustomerRegister customerRegister = CustomerRegister.CreateList(); // Singleton
+    BankInfo bankInfo = BankInfo.CreateList(); // Singleton
     EmployeeActions employeeActions = new EmployeeActions();
     CustomerActions customerActions = new CustomerActions();
 
-    public void start() throws InterruptedException {
+    public void mainMenu() throws InterruptedException {
 
         int userChoice = 0;
         while (userChoice != 3) {
@@ -38,10 +37,10 @@ public class AppLogic {
             Printout.employeeMenu();
             userChoice = InputValidation.validateUserIntegerChoice(4);
             switch (userChoice) {
-                case 1 -> employeeActions.addCustomer(customerRegister);
-                case 2 -> employeeActions.showCustomer(customerRegister);
-                case 3 -> employeeActions.disableCustomer(customerRegister);
-                case 4 -> start();
+                case 1 -> employeeActions.addCustomer(bankInfo);
+                case 2 -> employeeActions.showCustomer(bankInfo);
+                case 3 -> employeeActions.disableCustomer(bankInfo);
+                case 4 -> mainMenu();
             }
         }
     }
@@ -52,7 +51,7 @@ public class AppLogic {
         Customer chosenCustomer = null;
         boolean notNull = false;
         while (!notNull) {
-            chosenCustomer = Search.searchWithSSN(customerRegister.getCustomerList());
+            chosenCustomer = Search.searchWithSSN(bankInfo.getCustomerList());
             String displayString = chosenCustomer == null ? "Try again: " : "Welcome " + chosenCustomer.getfName() + " " + chosenCustomer.getlName();
             System.out.println(displayString);
             notNull = chosenCustomer == null ? false : true;
@@ -67,9 +66,8 @@ public class AppLogic {
                 case 1 -> customerActions.accountInfo(chosenCustomer);
                 case 2 -> customerActions.depositMoney(chosenCustomer);
                 case 3 -> customerActions.withdrawMoney(chosenCustomer);
-                case 4 -> start();
+                case 4 -> mainMenu();
             }
         }
     }
-
 }

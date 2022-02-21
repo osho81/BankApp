@@ -15,15 +15,16 @@ public class InputValidation {
         while (loop) { // Loop, ask for input until less than maxNum
             if (scan.hasNextInt()) {
                 currentValue = scan.nextInt();
-                if (currentValue > 0 || currentValue < maxNum)
+                if (currentValue > 0 && currentValue <= maxNum)
                     loop = false; // Only via here the loop stops
                 else
                     System.out.println("Must be less than " + maxNum);
             } else { // If input is not digits
                 System.out.println("Only numbers are allowed");
-                scan.next();
+                scan.nextLine();
             }
         }
+        scan.nextLine();
         return currentValue;
 
     }

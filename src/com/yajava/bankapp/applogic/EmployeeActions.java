@@ -1,16 +1,16 @@
-package com.yajava.bankapp.service;
+package com.yajava.bankapp.applogic;
 
 import com.yajava.bankapp.account.SavingAccount;
 import com.yajava.bankapp.account.TransactionAccount;
-import com.yajava.bankapp.applogic.CustomerRegister;
+import com.yajava.bankapp.banklogic.BankInfo;
 import com.yajava.bankapp.customer.Customer;
 import com.yajava.bankapp.utils.InputValidation;
-import com.yajava.bankapp.utils.Search;
+import com.yajava.bankapp.banklogic.Search;
 
 public class EmployeeActions {
 
     // Add customer AND generate and add accounts
-    public void addCustomer(CustomerRegister customerRegister) {
+    public void addCustomer(BankInfo bankInfo) {
 
         System.out.println("First name: ");
         String fName = InputValidation.stringValidation();
@@ -22,33 +22,37 @@ public class EmployeeActions {
         String ssn = InputValidation.stringedNumbersValidation();
 
         // Add 1000 to customer no; consider this when searching for specific customer
-        Customer customer = new Customer(fName, lName, address, ssn, (customerRegister.getCustomerList().size()+1000));
-        customerRegister.addToCustomerList(customer);
+        Customer customer = new Customer(fName, lName, address, ssn, (bankInfo.getCustomerList().size()+1000));
+        bankInfo.addToCustomerList(customer);
 
         // Generate accounts and assign them to created customer (and assign customer to accounts)
-        SavingAccount saveAccount = new SavingAccount("" + (customerRegister.getCustomerList().size()+1000000), customer);
+        SavingAccount saveAccount = new SavingAccount("" + (bankInfo.getCustomerList().size()+1000000), customer);
         customer.setSaveAcc(saveAccount);
-        TransactionAccount transAccount = new TransactionAccount("" + (customerRegister.getCustomerList().size()+9000000), customer);
+        TransactionAccount transAccount = new TransactionAccount("" + (bankInfo.getCustomerList().size()+9000000), customer);
         customer.setTransAcc(transAccount);
     }
 
-    public void showCustomer(CustomerRegister customerRegister) {
-        System.out.println("1. Display full customer list\n2. Display specific customer");
-        int choice = InputValidation.validateUserIntegerChoice(2);
-        if (choice == 1) {
-            for (var cust : customerRegister.getCustomerList()) {
-                System.out.println(cust);
+    public void showCustomer(BankInfo bankInfo) {
+        if (bankInfo.getCustomerList().size() == 0) {
+            System.out.println("No customer are registered in out bank");
+        } else {
+            System.out.println("1. Display full customer list\n2. Display specific customer");
+            int choice = InputValidation.validateUserIntegerChoice(2);
+            if (choice == 1) {
+                for (var cust : bankInfo.getCustomerList()) {
+                    System.out.println(cust);
+                }
+            } else { // Search and get customer to display
+                Customer chosenCustomer = Search.searchAndReturnCustomer(bankInfo.getCustomerList());
+                String displayString = chosenCustomer == null ? "Try again; See menu " : "" + chosenCustomer;
+                System.out.println(displayString);
             }
-        } else { // Search and get customer to display
-            Customer chosenCustomer = Search.searchAndReturnCustomer(customerRegister.getCustomerList());
-            String displayString = chosenCustomer == null ? "Try again; See menu " : "" + chosenCustomer;
-            System.out.println(displayString);
         }
     }
 
-    public void disableCustomer(CustomerRegister customerRegister) {
+    public void disableCustomer(BankInfo bankInfo) {
         // Search customer to block
-        Customer chosenCustomer = Search.searchAndReturnCustomer(customerRegister.getCustomerList());
+        Customer chosenCustomer = Search.searchAndReturnCustomer(bankInfo.getCustomerList());
         String displayString = chosenCustomer == null ? "Try again; See menu " : "Found customer: " + chosenCustomer;
         System.out.println(displayString);
 

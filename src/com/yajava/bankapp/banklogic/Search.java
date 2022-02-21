@@ -1,6 +1,7 @@
-package com.yajava.bankapp.utils;
+package com.yajava.bankapp.banklogic;
 
 import com.yajava.bankapp.customer.Customer;
+import com.yajava.bankapp.utils.InputValidation;
 
 import java.util.List;
 
