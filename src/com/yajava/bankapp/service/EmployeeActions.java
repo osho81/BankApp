@@ -1,12 +1,16 @@
 package com.yajava.bankapp.service;
 
+import com.yajava.bankapp.account.SavingAccount;
+import com.yajava.bankapp.account.TransactionAccount;
 import com.yajava.bankapp.applogic.CustomerRegister;
 import com.yajava.bankapp.customer.Customer;
 import com.yajava.bankapp.utils.InputValidation;
 import java.util.List;
+import java.util.Objects;
 
 public class EmployeeActions {
 
+    // Add customer AND generate and add accounts
     public void addCustomer(CustomerRegister customerRegister) {
 
         System.out.println("First name: ");
@@ -21,6 +25,12 @@ public class EmployeeActions {
         // Add 1000 to customer no; consider this when searching for specific customer
         Customer customer = new Customer(fName, lName, address, ssn, (customerRegister.getCustomerList().size()+1000));
         customerRegister.addToCustomerList(customer);
+
+        // Generate accounts and assign them to created customer (and assign customer to accounts)
+        SavingAccount saveAccount = new SavingAccount("" + (customerRegister.getCustomerList().size()+1000000), customer);
+        customer.setSaveAcc(saveAccount);
+        TransactionAccount transAccount = new TransactionAccount("" + (customerRegister.getCustomerList().size()+9000000), customer);
+        customer.setTransAcc(transAccount);
     }
 
     public void showCustomer(CustomerRegister customerRegister) {
@@ -30,21 +40,40 @@ public class EmployeeActions {
             for (var cust : customerRegister.getCustomerList()) {
                 System.out.println(cust);
             }
-        } else {
-            searchAndDisplay(customerRegister.getCustomerList());
+        } else { // Search and get customer to display
+            Customer chosenCustomer = searchAndReturnCustomer(customerRegister.getCustomerList());
+            String displayString = chosenCustomer == null ? "Try again; See menu " : "" + chosenCustomer;
+            System.out.println(displayString);
         }
     }
 
+    public void disableCustomer(CustomerRegister customerRegister) {
+        // Search customer to block
+        Customer chosenCustomer = searchAndReturnCustomer(customerRegister.getCustomerList());
+        String displayString = chosenCustomer == null ? "Try again; See menu " : "Accounts are disabled for the following customer:\n" + chosenCustomer;
+        System.out.println(displayString);
 
-    //------------FIX SEARH BY SSN-------------------//
+        // Actually disabling eventual accounts for chosen customer
+        // Consider null situations
+        Objects.requireNonNull(chosenCustomer).setBlockedSaveAcc(chosenCustomer.getSaveAcc());
+        Objects.requireNonNull(chosenCustomer).setBlockedTransAcc(chosenCustomer.getTransAcc());
+        chosenCustomer.setSaveAcc(null);
+        chosenCustomer.setTransAcc(null);
 
-    private void searchAndDisplay(List customerList) {
+    }
+
+    private Customer searchAndReturnCustomer(List customerList) {
         System.out.println("1.Search customer by customer number\n2.Search customer by SSN");
         int choice = InputValidation.validateUserMenuChoice();
+        Customer foundCustomer = null;
+
+        // Search for specific customer by customer number
         if (choice == 1) {
-            System.out.println("Enter customer number or name");
+            System.out.println("Enter customer number");
             int customerChoice = InputValidation.validateCustomerChoice(customerList);
-            System.out.println(customerList.get(customerChoice));
+            foundCustomer = (Customer) customerList.get(customerChoice);
+
+            // Search for specific customer by SSN
         } else if (choice == 2) {
             System.out.println("Enter customer SSN");
             boolean found = false;
@@ -52,21 +81,16 @@ public class EmployeeActions {
             for (Object customer : customerList) {
                 Customer currentCustomer = (Customer) customer;
                 if (currentCustomer.getSSN().equals(customerChoice)) { // If there is a hit...
-                    System.out.println(currentCustomer); // Print found customer
+                    foundCustomer = currentCustomer; // Return found customer
                     found = true; // and mark customer as found
                 }
             }
-            if (!found) // If not found
+            if (!found)  // If not found
                 System.out.println("Did not find " + customerChoice);
 
         }
+        return foundCustomer;
     }
 
 
-
-    public void disableCustomer() {
-        // make transactions for chosen customer NULL
-        // If remove customer, customer ID might be mixed up?
-
-    }
 }

@@ -22,12 +22,12 @@ public abstract class BankAccount {
 		for (char ch : accountNo.toCharArray()) {
 			switch (ch) {
 		case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' -> onlyNums = true;
-        default -> throw new IllegalArgumentException("Only numbers allowed");
+        default -> onlyNums = false;
 			}
 		}
 		
 		// If account number is 9 charcters and only numbers, accept it
-		if (accountNo.length() == 9 && onlyNums) {
+		if (accountNo.length() > 7 && onlyNums) {
 			this.accountNo = accountNo;
 		} else {
 			throw new IllegalArgumentException("Accountnumber must be 9 numbers");

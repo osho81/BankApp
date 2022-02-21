@@ -7,6 +7,11 @@ public class Customer extends Person {
 
 	private TransactionAccount transAcc;
 	private SavingAccount saveAcc;
+
+	// Containers for blocked customer accounts
+	private TransactionAccount blockedTransAcc;
+	private SavingAccount blockedSaveAcc;
+
 	private int customerNo;
 
 	// Constructor, also implementing super class constructor
@@ -31,6 +36,22 @@ public class Customer extends Person {
 	public void setSaveAcc(SavingAccount saveAcc) {
 		this.saveAcc = saveAcc;
 		saveAcc.setOwner(this); // Enforce assignment in account also
+	}
+
+	public TransactionAccount getBlockedTransAcc() {
+		return blockedTransAcc;
+	}
+
+	public void setBlockedTransAcc(TransactionAccount transAcc) {
+		this.blockedTransAcc = blockedTransAcc;
+	}
+
+	public SavingAccount getBlockedSaveAcc() {
+		return blockedSaveAcc;
+	}
+
+	public void setBlockedSaveAcc(SavingAccount saveAcc) {
+		this.blockedSaveAcc = blockedSaveAcc;
 	}
 
 	public int getCustomerNo() {

@@ -10,7 +10,7 @@ public class TransactionAccount extends BankAccount {
 	
 	private Customer owner;
 	
-	// Constructor, creating account without assignit it to an owner
+	// Constructor, creating account without assigning it to an owner
 	public TransactionAccount(String accountNo) {
 		super(accountNo);
 	}

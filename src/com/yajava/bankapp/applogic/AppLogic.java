@@ -38,7 +38,7 @@ public class AppLogic {
             switch (userChoice) {
                 case 1 -> employeeActions.addCustomer(customerRegister);
                 case 2 -> employeeActions.showCustomer(customerRegister);
-                case 3 -> employeeActions.disableCustomer();
+                case 3 -> employeeActions.disableCustomer(customerRegister);
                 case 4 -> start();
             }
         }
