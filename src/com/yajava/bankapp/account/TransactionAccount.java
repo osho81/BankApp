@@ -2,9 +2,7 @@ package com.yajava.bankapp.account;
 
 import com.yajava.bankapp.customer.Customer;
 
-/**
- * TransactionAccount (checking account) inheriting from BankAccount parent class.
- */
+// TransactionAccount (checking account) inheriting from BankAccount parent class.
 
 public class TransactionAccount extends BankAccount {
 	

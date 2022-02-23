@@ -4,6 +4,8 @@ import com.yajava.bankapp.account.BankAccount;
 import com.yajava.bankapp.customer.Customer;
 import com.yajava.bankapp.utils.InputValidation;
 
+// Class for all customer action methods
+
 public class CustomerActions {
 
     public void accountInfo(Customer chosenCustomer) {

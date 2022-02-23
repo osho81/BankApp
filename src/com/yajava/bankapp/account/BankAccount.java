@@ -1,5 +1,6 @@
 package com.yajava.bankapp.account;
 
+// Class for general bank account; parent to transaction and saving accounts
 
 public abstract class BankAccount {
 

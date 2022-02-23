@@ -2,9 +2,7 @@ package com.yajava.bankapp.account;
 
 import com.yajava.bankapp.customer.Customer;
 
-/**
- * SavingAccount inheriting from BankAccount parent class
- */
+// SavingAccount inheriting from BankAccount parent class
 
 public class SavingAccount extends BankAccount {
 

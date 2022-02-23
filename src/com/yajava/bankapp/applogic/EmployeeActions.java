@@ -7,6 +7,8 @@ import com.yajava.bankapp.customer.Customer;
 import com.yajava.bankapp.utils.InputValidation;
 import com.yajava.bankapp.banklogic.Search;
 
+// Class for all employee action methods
+
 public class EmployeeActions {
 
     // Add customer AND generate and add accounts
