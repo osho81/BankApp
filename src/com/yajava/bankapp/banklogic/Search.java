@@ -2,8 +2,9 @@ package com.yajava.bankapp.banklogic;
 
 import com.yajava.bankapp.customer.Customer;
 import com.yajava.bankapp.utils.InputValidation;
-
 import java.util.List;
+
+// Class with static methods for searching and returning bank customer
 
 public class Search {
 

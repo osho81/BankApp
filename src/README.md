@@ -10,5 +10,5 @@ Bank Application. Possible to create accounts, customers and make certain transa
 - Withdraw money
 
 ## Purpose/Motivation 
-To imporve skills in object oriented java. 
+To improve skills in object oriented java. 
 

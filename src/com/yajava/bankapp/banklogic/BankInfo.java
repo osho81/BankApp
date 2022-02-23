@@ -5,7 +5,7 @@ import com.yajava.bankapp.customer.Customer;
 import java.util.ArrayList;
 import java.util.List;
 
-// Class holding a customer list; implementing singleton pattern
+// Class holding bank info & customer list; implementing singleton pattern
 
 public class BankInfo {
     private String bankName;
