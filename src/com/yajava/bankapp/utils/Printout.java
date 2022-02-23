@@ -1,5 +1,7 @@
 package com.yajava.bankapp.utils;
 
+// Class with static methods for reoccurring and basic printouts
+
 public class Printout {
 
     public static void welcome() throws InterruptedException {

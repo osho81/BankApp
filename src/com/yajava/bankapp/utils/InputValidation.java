@@ -3,6 +3,8 @@ package com.yajava.bankapp.utils;
 import java.util.List;
 import java.util.Scanner;
 
+// Class with static methods for validating correct input
+
 public class InputValidation {
 
     // Scanner to be accessed only in this class

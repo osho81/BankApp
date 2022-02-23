@@ -1,5 +1,7 @@
 package com.yajava.bankapp.customer;
 
+// Class for a general person; Parent for Customer class
+
 public abstract class Person {
 
 	private String fName;

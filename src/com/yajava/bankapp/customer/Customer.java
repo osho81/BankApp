@@ -3,12 +3,14 @@ package com.yajava.bankapp.customer;
 import com.yajava.bankapp.account.SavingAccount;
 import com.yajava.bankapp.account.TransactionAccount;
 
+// Class for Customer
+
 public class Customer extends Person {
 
 	private TransactionAccount transAcc;
 	private SavingAccount saveAcc;
 
-	// Containers for blocked customer accounts
+	// Containers for blocked customer accounts´(to save them, but disable them)
 	private TransactionAccount blockedTransAcc;
 	private SavingAccount blockedSaveAcc;
 
@@ -26,7 +28,8 @@ public class Customer extends Person {
 
 	public void setTransAcc(TransactionAccount transAcc) {
 		this.transAcc = transAcc;
-		transAcc.setOwner(this); // Enforce assignment in account also
+		// Enforce assignment in account also; this refers to this current customer
+		transAcc.setOwner(this);
 	}
 
 	public SavingAccount getSaveAcc() {
@@ -35,7 +38,7 @@ public class Customer extends Person {
 
 	public void setSaveAcc(SavingAccount saveAcc) {
 		this.saveAcc = saveAcc;
-		saveAcc.setOwner(this); // Enforce assignment in account also
+		saveAcc.setOwner(this);
 	}
 
 	public TransactionAccount getBlockedTransAcc() {
