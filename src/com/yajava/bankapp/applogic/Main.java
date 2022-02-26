@@ -3,7 +3,7 @@ package com.yajava.bankapp.applogic;
 import com.yajava.bankapp.utils.Printout;
 
 /**
- * Main class; welcomes user and starts the app (menu/application logic)
+ * Main class; welcomes user and starts the app (AppLLogic with its menu choices)
  * Author: https://github.com/osho81
  */
 
