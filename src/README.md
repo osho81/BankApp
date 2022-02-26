@@ -1,7 +1,10 @@
 # Bank Application
 
 ## Description 
-Bank Application. Possible to create accounts, customers and make certain transactions.  
+Bank Application with employer actions and customer actions. 
+When simulating a bank employee, it is possible to create accounts, customers as well as block/disable customer.  
+When simulating a bank customer, it is possible to make transactions between accounts and into bank account. 
+Employee can display any customer bank info, customer can display own bank info. 
 
 ### Functions 
 - Register bank customers
