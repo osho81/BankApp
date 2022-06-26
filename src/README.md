@@ -13,6 +13,7 @@ Employee can display any customer bank info, customer can display own bank info.
 - Withdraw money
 - Display bank info
 
-## Purpose/Motivation 
+### Purpose/Motivation 
 To improve skills in object oriented java. 
 
+- New/upgraded bank app using Spring framework(s)
