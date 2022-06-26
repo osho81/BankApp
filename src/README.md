@@ -16,4 +16,5 @@ Employee can display any customer bank info, customer can display own bank info.
 ### Purpose/Motivation 
 To improve skills in object oriented java. 
 
+### TODO
 - New/upgraded bank app using Spring framework(s)
