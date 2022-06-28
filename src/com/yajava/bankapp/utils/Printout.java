@@ -14,8 +14,8 @@ public class Printout {
     }
 
     public static void exitMessage() throws InterruptedException {
-        String welcome = "Thank You!\n";
-        for (char c : welcome.toCharArray()) {
+        String thankYou = "Thank You!\n";
+        for (char c : thankYou.toCharArray()) {
             System.out.print(c);
             Thread.sleep(50);
         }
