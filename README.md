@@ -17,4 +17,4 @@ Employee can display any customer bank info, customer can display own bank info.
 To improve skills in object oriented java. 
 
 ### TODO
-- New/upgraded bank app using Spring framework(s)
+- New/upgraded bank app using Spring/Spring boot
